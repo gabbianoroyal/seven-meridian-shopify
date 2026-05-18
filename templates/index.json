@@ -1,0 +1,127 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "est_text": "EST. 2026 · SEVEN-OIL CONCENTRATE",
+        "heading": "<p>Seven Oils. One Heritage Formula. <em>Restored.<\/em><\/p>",
+        "subheading": "The botanical relief oil long-time users have been waiting for — at full strength, in a sealed bottle that won't evaporate, delivered to your door.",
+        "button_text": "Shop Now",
+        "button_secondary_text": "Subscribe & Save 15%"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "text": "Made in USA" } },
+        "b2": { "type": "badge", "settings": { "text": "COA-Tested Every Batch" } },
+        "b3": { "type": "badge", "settings": { "text": "90-Day Guarantee" } },
+        "b4": { "type": "badge", "settings": { "text": "Sealed Against Evaporation" } },
+        "b5": { "type": "badge", "settings": { "text": "Free Shipping on Subscriptions" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5"]
+    },
+    "featured": {
+      "type": "featured-product",
+      "settings": {
+        "tag_text": "HERO PRODUCT · BEST SELLER",
+        "subscribe_text": "$19.54 with Subscribe & Save (15% off)"
+      },
+      "blocks": {
+        "f1": { "type": "bullet", "settings": { "text": "22% menthol for fast cooling action" } },
+        "f2": { "type": "bullet", "settings": { "text": "7 botanical oils at full heritage concentration" } },
+        "f3": { "type": "bullet", "settings": { "text": "Aluminum cap with Polycone liner — sealed against evaporation" } },
+        "f4": { "type": "bullet", "settings": { "text": "COA-tested every batch · Made in USA" } },
+        "f5": { "type": "bullet", "settings": { "text": "90-day satisfaction guarantee" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+    },
+    "seven_oils": {
+      "type": "seven-oils",
+      "settings": {
+        "heading": "Seven Oils. One Precise Blend.",
+        "subheading": "Each oil selected for a specific role in the heritage formula — blended at full therapeutic concentration."
+      },
+      "blocks": {
+        "o1": { "type": "oil", "settings": { "percentage": "48%", "name": "Safflower Seed Oil", "role": "Cold-pressed carrier base for smooth absorption" } },
+        "o2": { "type": "oil", "settings": { "percentage": "22%", "name": "Menthol", "role": "Activates cooling sensation within 60 seconds" } },
+        "o3": { "type": "oil", "settings": { "percentage": "10%", "name": "Eucalyptus Globulus", "role": "Crisp aromatic top note — signature heritage scent" } },
+        "o4": { "type": "oil", "settings": { "percentage": "8%", "name": "Camphor", "role": "Warming follow-through that complements the menthol" } },
+        "o5": { "type": "oil", "settings": { "percentage": "6%", "name": "Wintergreen", "role": "Deep warming aromatic — Gaultheria procumbens" } },
+        "o6": { "type": "oil", "settings": { "percentage": "3%", "name": "Lavender", "role": "Soft floral finish, balances menthol intensity" } },
+        "o7": { "type": "oil", "settings": { "percentage": "<1%", "name": "Clove Bud", "role": "Eugenol — traditional bottom note" } }
+      },
+      "block_order": ["o1", "o2", "o3", "o4", "o5", "o6", "o7"]
+    },
+    "how_to_use": {
+      "type": "how-to-use",
+      "settings": {
+        "heading": "4 Uses, One Bottle",
+        "subheading": "Apply 1–4 drops to the desired area and rub in gently."
+      },
+      "blocks": {
+        "u1": { "type": "use_case", "settings": { "title": "Sore Muscles", "description": "After workouts: 2–3 drops to sore muscles. Rub in for fast-cooling relief that lasts 4+ hours." } },
+        "u2": { "type": "use_case", "settings": { "title": "Tension Headaches", "description": "For tension: 1 drop, diluted with carrier oil, to the temples. Take a deep breath. Let the eucalyptus and lavender do their work." } },
+        "u3": { "type": "use_case", "settings": { "title": "Sinus Support", "description": "For congestion: 1 drop under the nose or on the chest. Eucalyptus and wintergreen support clear breathing." } },
+        "u4": { "type": "use_case", "settings": { "title": "Joint Comfort", "description": "For stiff joints: 3–4 drops massaged into the area twice daily. The warming sensation supports ongoing comfort." } }
+      },
+      "block_order": ["u1", "u2", "u3", "u4"]
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "settings": {
+        "heading": "See the Difference",
+        "col_left": "Typical 5ml Heritage Bottle",
+        "col_right": "Seven Meridian"
+      },
+      "blocks": {
+        "c1": { "type": "row", "settings": { "attribute": "Bottle Size", "competitor": "5ml (0.17 fl oz)", "seven_meridian": "10ml (0.34 fl oz)" } },
+        "c2": { "type": "row", "settings": { "attribute": "Formula Strength", "competitor": "Reformulated, diluted", "seven_meridian": "Full heritage concentration" } },
+        "c3": { "type": "row", "settings": { "attribute": "Packaging Seal", "competitor": "Standard cap — evaporates", "seven_meridian": "Aluminum cap, Polycone liner — sealed" } },
+        "c4": { "type": "row", "settings": { "attribute": "Distribution", "competitor": "MLM affiliate / consultant", "seven_meridian": "Direct to your door" } },
+        "c5": { "type": "row", "settings": { "attribute": "Price per fl oz", "competitor": "$80–117/fl oz", "seven_meridian": "$66/fl oz (40% better value)" } },
+        "c6": { "type": "row", "settings": { "attribute": "Guarantee", "competitor": "Varies by affiliate", "seven_meridian": "90-day satisfaction guarantee" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"]
+    },
+    "subscription": {
+      "type": "subscription-pitch",
+      "settings": {
+        "label": "SUBSCRIBE & SAVE",
+        "heading": "Never Run Out",
+        "description": "Get your botanical relief oil delivered on your schedule at 15% off every order. Flexible cadence, no commitment.",
+        "button_text": "Start Your Subscription"
+      },
+      "blocks": {
+        "s1": { "type": "feature", "settings": { "text": "15% off every delivery" } },
+        "s2": { "type": "feature", "settings": { "text": "Choose every 60, 75, or 90 days" } },
+        "s3": { "type": "feature", "settings": { "text": "Skip, pause, or cancel anytime" } },
+        "s4": { "type": "feature", "settings": { "text": "Free shipping on all subscriptions" } },
+        "s5": { "type": "feature", "settings": { "text": "\"Running low\" reminder before each shipment" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4", "s5"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Frequently Asked Questions" },
+      "blocks": {
+        "q1": { "type": "faq", "settings": { "question": "How is this different from the original Tei-Fu Essential Oil?", "answer": "<p>Seven Meridian uses the same heritage 7-oil architecture at full concentration. It's 10ml instead of 5ml, sealed against evaporation, and shipped directly to your door.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "Is this safe to use on the face for tension headaches?", "answer": "<p>Apply 1 drop diluted in carrier oil to the temples, never directly on the face undiluted. Avoid eyes, nose, and mouth. Always patch-test before first use.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "Will the bottle evaporate like other essential oils?", "answer": "<p>No. Seven Meridian uses an aluminum cap with Polycone liner specifically designed to prevent vapor permeation. Stored properly, it maintains full strength for 24+ months.</p>" } },
+        "q4": { "type": "faq", "settings": { "question": "Can I subscribe and save?", "answer": "<p>Yes. Subscribe & Save is available with 15% off recurring deliveries. We recommend a 60-day delivery cycle for daily users.</p>" } },
+        "q5": { "type": "faq", "settings": { "question": "Is it safe during pregnancy?", "answer": "<p>Contains wintergreen and camphor — consult your healthcare professional before use during pregnancy, nursing, or while under medical care.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "What if I'm not satisfied?", "answer": "<p>We offer a 90-day satisfaction guarantee. Contact us for a full refund, no questions asked.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
+    },
+    "email": {
+      "type": "email-capture",
+      "settings": {
+        "heading": "Join the Seven Meridian Community",
+        "description": "Get 10% off your first order, plus tips on botanical wellness and early access to new products.",
+        "button_text": "Get 10% Off"
+      }
+    }
+  },
+  "order": ["hero", "trust", "featured", "seven_oils", "how_to_use", "comparison", "subscription", "faq", "email"]
+}

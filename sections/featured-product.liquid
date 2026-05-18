@@ -1,0 +1,144 @@
+<style>
+  .featured-product {
+    padding: 80px 24px;
+    background: var(--color-background);
+  }
+  .featured-product__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .featured-product__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .featured-product__content {}
+  .featured-product__tag {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+  .featured-product__title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3.5vw, 36px);
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .featured-product__price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+  .featured-product__sub-price {
+    font-size: 14px;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .featured-product__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .featured-product__bullets li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+  .featured-product__bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+  .featured-product__actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    .featured-product__inner { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="featured-product">
+  <div class="featured-product__inner">
+    <div class="featured-product__image">
+      {%- if section.settings.product != blank and section.settings.product.featured_image != blank -%}
+        {{ section.settings.product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="featured-product__content">
+      <p class="featured-product__tag">{{ section.settings.tag_text }}</p>
+      {%- if section.settings.product != blank -%}
+        <h2 class="featured-product__title">{{ section.settings.product.title }}</h2>
+        <div class="featured-product__price">{{ section.settings.product.price | money }}</div>
+        <div class="featured-product__sub-price">{{ section.settings.subscribe_text }}</div>
+      {%- else -%}
+        <h2 class="featured-product__title">Botanical Relief Oil — 10ml</h2>
+        <div class="featured-product__price">$22.99</div>
+        <div class="featured-product__sub-price">$19.54 with Subscribe & Save (15% off)</div>
+      {%- endif -%}
+      <ul class="featured-product__bullets">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+        {%- endfor -%}
+      </ul>
+      <div class="featured-product__actions">
+        {%- if section.settings.product != blank -%}
+          <a href="{{ section.settings.product.url }}" class="btn-primary">View Product</a>
+        {%- else -%}
+          <a href="/collections/all" class="btn-primary">Shop Now</a>
+        {%- endif -%}
+        <a href="/pages/subscribe" class="btn-secondary">Subscribe &amp; Save</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "tag_text", "label": "Tag text", "default": "HERO PRODUCT · BEST SELLER" },
+    { "type": "text", "id": "subscribe_text", "label": "Subscription price text", "default": "$19.54 with Subscribe & Save (15% off)" }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "22% menthol for fast cooling action" } },
+        { "type": "bullet", "settings": { "text": "7 botanical oils at full heritage concentration" } },
+        { "type": "bullet", "settings": { "text": "Aluminum cap with Polycone liner — sealed against evaporation" } },
+        { "type": "bullet", "settings": { "text": "COA-tested every batch · Made in USA" } },
+        { "type": "bullet", "settings": { "text": "90-day satisfaction guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

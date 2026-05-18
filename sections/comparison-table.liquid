@@ -1,0 +1,115 @@
+<style>
+  .comparison {
+    padding: 80px 24px;
+    background: #F8F7F4;
+  }
+  .comparison__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .comparison__title {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--color-primary);
+    text-align: center;
+    margin: 0 0 40px;
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .comparison-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .comparison-table thead th:last-child {
+    background: rgba(197, 165, 114, 0.08);
+    color: var(--color-accent);
+  }
+  .comparison-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .comparison-table td:first-child {
+    font-weight: 600;
+    color: var(--color-primary);
+    width: 30%;
+  }
+  .comparison-table td:last-child {
+    background: rgba(197, 165, 114, 0.04);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  .comparison-table td:nth-child(2) {
+    color: var(--color-text-light);
+  }
+  @media (max-width: 600px) {
+    .comparison-table { font-size: 13px; }
+    .comparison-table td, .comparison-table th { padding: 10px 12px; }
+  }
+</style>
+
+<section class="comparison">
+  <div class="comparison__inner">
+    <h2 class="comparison__title">{{ section.settings.heading }}</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>{{ section.settings.col_left }}</th>
+          <th>{{ section.settings.col_right }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          <tr {{ block.shopify_attributes }}>
+            <td>{{ block.settings.attribute }}</td>
+            <td>{{ block.settings.competitor }}</td>
+            <td>{{ block.settings.seven_meridian }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "See the Difference" },
+    { "type": "text", "id": "col_left", "label": "Left column header", "default": "Typical 5ml Heritage Bottle" },
+    { "type": "text", "id": "col_right", "label": "Right column header", "default": "Seven Meridian" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "attribute", "label": "Attribute" },
+        { "type": "text", "id": "competitor", "label": "Competitor value" },
+        { "type": "text", "id": "seven_meridian", "label": "Seven Meridian value" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "blocks": [
+        { "type": "row", "settings": { "attribute": "Bottle Size", "competitor": "5ml (0.17 fl oz)", "seven_meridian": "10ml (0.34 fl oz)" } },
+        { "type": "row", "settings": { "attribute": "Formula Strength", "competitor": "Reformulated, diluted", "seven_meridian": "Full heritage concentration" } },
+        { "type": "row", "settings": { "attribute": "Packaging Seal", "competitor": "Standard cap — evaporates", "seven_meridian": "Aluminum cap, Polycone liner — sealed" } },
+        { "type": "row", "settings": { "attribute": "Distribution", "competitor": "MLM affiliate / consultant", "seven_meridian": "Direct to your door" } },
+        { "type": "row", "settings": { "attribute": "Price per fl oz", "competitor": "$80–117/fl oz", "seven_meridian": "$66/fl oz (40% better value)" } },
+        { "type": "row", "settings": { "attribute": "Guarantee", "competitor": "Varies by affiliate", "seven_meridian": "90-day satisfaction guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

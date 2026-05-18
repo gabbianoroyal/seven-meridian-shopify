@@ -1,0 +1,118 @@
+<style>
+  .cart-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+  .cart-page h1 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    color: var(--color-primary);
+    margin: 0 0 32px;
+  }
+  .cart-empty {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--color-text-light);
+  }
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .cart-table th {
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-light);
+    padding: 12px 0;
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .cart-table td {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+  }
+  .cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .cart-item-info img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    background: #F8F7F4;
+  }
+  .cart-item-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-primary);
+  }
+  .cart-summary {
+    margin-top: 32px;
+    text-align: right;
+  }
+  .cart-summary__total {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+</style>
+
+<section class="cart-page">
+  <h1>Your Cart</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="cart-empty">
+      <p>Your cart is empty.</p>
+      <a href="/collections/all" class="btn-primary" style="display:inline-block;margin-top:16px;">Continue Shopping</a>
+    </div>
+  {%- else -%}
+    <form action="/cart" method="post">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr>
+              <td>
+                <div class="cart-item-info">
+                  {%- if item.image -%}
+                    {{ item.image | image_url: width: 150 | image_tag }}
+                  {%- endif -%}
+                  <span class="cart-item-title">{{ item.product.title }}</span>
+                </div>
+              </td>
+              <td>{{ item.price | money }}</td>
+              <td>
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" max="10" style="width:50px;padding:6px;border:1px solid var(--color-border);text-align:center;">
+              </td>
+              <td>{{ item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <div class="cart-summary__total">Subtotal: {{ cart.total_price | money }}</div>
+        <button type="submit" name="update" class="btn-secondary" style="margin-right:8px;">Update Cart</button>
+        <button type="submit" name="checkout" class="btn-primary">Checkout</button>
+        <div style="margin-top:12px;font-size:12px;color:var(--color-accent);font-weight:600;">
+          Switch to Subscribe &amp; Save for 15% off every order
+        </div>
+      </div>
+    </form>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Cart Page", "settings": [] }
+{% endschema %}

@@ -1,0 +1,93 @@
+<style>
+  .faq-section {
+    padding: 80px 24px;
+    background: #F8F7F4;
+  }
+  .faq-section__inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .faq-section__title {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--color-primary);
+    text-align: center;
+    margin: 0 0 40px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .faq-item summary {
+    padding: 20px 0;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--color-accent);
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item__answer {
+    padding: 0 0 20px;
+    font-size: 14px;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+</style>
+
+<section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="faq-section__inner">
+    <h2 class="faq-section__title">{{ section.settings.heading }}</h2>
+    {%- for block in section.blocks -%}
+      <details class="faq-item" {{ block.shopify_attributes }} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">{{ block.settings.question }}</summary>
+        <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{{ block.settings.answer }}</div>
+        </div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "How is this different from the original Tei-Fu Essential Oil?", "answer": "<p>Seven Meridian uses the same heritage 7-oil architecture (safflower, menthol, eucalyptus, camphor, wintergreen, lavender, clove) at full concentration. It's 10ml instead of 5ml, sealed against evaporation, and shipped directly to your door.</p>" } },
+        { "type": "faq", "settings": { "question": "Is this safe to use on the face for tension headaches?", "answer": "<p>Apply 1 drop diluted in carrier oil to the temples, never directly on the face undiluted. Avoid eyes, nose, and mouth. Always patch-test before first use.</p>" } },
+        { "type": "faq", "settings": { "question": "Will the bottle evaporate like other essential oils?", "answer": "<p>No. Seven Meridian uses an aluminum cap with Polycone liner specifically designed to prevent vapor permeation. Stored properly, it maintains full strength for 24+ months.</p>" } },
+        { "type": "faq", "settings": { "question": "Can I subscribe and save?", "answer": "<p>Yes. Subscribe & Save is available with 15% off recurring deliveries. We recommend a 60-day delivery cycle for daily users. You can skip, pause, or cancel anytime.</p>" } },
+        { "type": "faq", "settings": { "question": "Is it safe during pregnancy?", "answer": "<p>Contains wintergreen and camphor — consult your healthcare professional before use during pregnancy, nursing, or while under medical care.</p>" } },
+        { "type": "faq", "settings": { "question": "What if I'm not satisfied?", "answer": "<p>We offer a 90-day satisfaction guarantee. Contact us for a full refund, no questions asked.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

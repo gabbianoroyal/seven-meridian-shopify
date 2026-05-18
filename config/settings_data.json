@@ -1,0 +1,23 @@
+{
+  "current": {
+    "color_primary": "#0B2545",
+    "color_accent": "#C5A572",
+    "color_background": "#FFFFFF",
+    "color_text": "#1A1A1A",
+    "color_text_light": "#6B7280",
+    "color_border": "#E5E7EB",
+    "announcement_text": "Subscribe & Save 15% — Free Shipping on All Subscriptions",
+    "cart_type": "drawer",
+    "free_shipping_threshold": 30,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    }
+  }
+}

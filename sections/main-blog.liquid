@@ -1,0 +1,71 @@
+<style>
+  .blog-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+  .blog-page h1 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    color: var(--color-primary);
+    margin: 0 0 32px;
+    text-align: center;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .blog-card a { text-decoration: none; color: inherit; }
+  .blog-card__image {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: #F8F7F4;
+    margin-bottom: 16px;
+  }
+  .blog-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blog-card__title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+  .blog-card__excerpt {
+    font-size: 14px;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  .blog-card__date {
+    font-size: 12px;
+    color: var(--color-text-light);
+    margin-bottom: 8px;
+  }
+</style>
+
+<section class="blog-page">
+  <h1>{{ blog.title }}</h1>
+  <div class="blog-grid">
+    {%- for article in blog.articles -%}
+      <div class="blog-card">
+        <a href="{{ article.url }}">
+          {%- if article.image -%}
+            <div class="blog-card__image">
+              {{ article.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+            </div>
+          {%- endif -%}
+          <div class="blog-card__date">{{ article.published_at | date: '%B %d, %Y' }}</div>
+          <h2 class="blog-card__title">{{ article.title }}</h2>
+          <p class="blog-card__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 120 }}</p>
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

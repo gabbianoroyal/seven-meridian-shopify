@@ -1,0 +1,180 @@
+{%- comment -%}Seven Meridian Hero Banner — Homepage{%- endcomment -%}
+
+<style>
+  .hero-banner {
+    position: relative;
+    background: var(--color-primary);
+    color: #fff;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-content {
+    max-width: 520px;
+  }
+  .hero-est {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0 0 20px;
+  }
+  .hero-title em {
+    color: var(--color-accent);
+    font-style: italic;
+  }
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 32px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3));
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 48px 24px; }
+    .hero-content { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-image { order: -1; }
+  }
+</style>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-est">{{ section.settings.est_text }}</p>
+      <h1 class="hero-title">{{ section.settings.heading }}</h1>
+      <p class="hero-subtitle">{{ section.settings.subheading }}</p>
+      <div class="hero-actions">
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_link }}" class="btn-primary">{{ section.settings.button_text }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_secondary_text != blank -%}
+          <a href="{{ section.settings.button_secondary_link }}" class="btn-secondary">{{ section.settings.button_secondary_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="hero-image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'eager', alt: 'Seven Meridian Botanical Relief Oil' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "est_text",
+      "label": "Establishment text",
+      "default": "EST. 2026 · SEVEN-OIL CONCENTRATE"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Seven Oils. One Heritage Formula. <em>Restored.</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The botanical relief oil long-time users have been waiting for — at full strength, in a sealed bottle that won't evaporate, delivered to your door."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero product image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Primary button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_text",
+      "label": "Secondary button text",
+      "default": "Subscribe & Save 15%"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

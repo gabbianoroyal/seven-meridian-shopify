@@ -1,0 +1,75 @@
+<style>
+  .trust-bar {
+    background: #F8F7F4;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 20px 24px;
+  }
+  .trust-bar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .trust-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .trust-bar__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+</style>
+
+<section class="trust-bar">
+  <div class="trust-bar__inner">
+    {%- for block in section.blocks -%}
+      <div class="trust-bar__item" {{ block.shopify_attributes }}>
+        <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        {{ block.settings.text }}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Badge text",
+          "default": "Made in USA"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        { "type": "badge", "settings": { "text": "Made in USA" } },
+        { "type": "badge", "settings": { "text": "COA-Tested Every Batch" } },
+        { "type": "badge", "settings": { "text": "90-Day Guarantee" } },
+        { "type": "badge", "settings": { "text": "Sealed Against Evaporation" } },
+        { "type": "badge", "settings": { "text": "Free Shipping on Subscriptions" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

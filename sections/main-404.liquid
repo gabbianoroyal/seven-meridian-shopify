@@ -1,0 +1,29 @@
+<style>
+  .page-404 {
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .page-404 h1 {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .page-404 p {
+    color: var(--color-text-light);
+    font-size: 16px;
+    margin: 0 0 32px;
+  }
+</style>
+
+<section class="page-404">
+  <h1>Page Not Found</h1>
+  <p>The page you're looking for doesn't exist or has been moved.</p>
+  <a href="/" class="btn-primary">Back to Home</a>
+</section>
+
+{% schema %}
+{ "name": "404 Page", "settings": [] }
+{% endschema %}

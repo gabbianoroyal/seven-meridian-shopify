@@ -1,6 +1,10 @@
 {%- comment -%}Seven Meridian Header — Announcement bar + Navigation{%- endcomment -%}
 
 <style>
+  @keyframes announcement-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
   .announcement-bar {
     background: var(--color-primary);
     color: #fff;
@@ -8,6 +12,17 @@
     padding: 8px 16px;
     font-size: 13px;
     letter-spacing: 0.05em;
+    overflow: hidden;
+    position: relative;
+  }
+  .announcement-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(197,165,114,0.15) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: announcement-shimmer 4s ease-in-out infinite;
+    pointer-events: none;
   }
   .announcement-bar a {
     color: var(--color-accent);
@@ -86,6 +101,25 @@
     justify-content: center;
     font-weight: 700;
   }
+  .header-shop-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .header-shop-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+    color: var(--color-primary);
+  }
   .mobile-menu-toggle {
     display: none;
     background: none;
@@ -96,6 +130,7 @@
   @media (max-width: 768px) {
     .header-nav { display: none; }
     .mobile-menu-toggle { display: block; }
+    .header-shop-btn { display: none; }
   }
 </style>
 
@@ -135,7 +170,8 @@
       <a href="/search" aria-label="Search">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </a>
-      <a href="/cart" class="cart-link" aria-label="Cart">
+      <a href="/collections/all" class="header-shop-btn">Shop Now</a>
+      <a href="/cart" class="cart-link" id="cart-toggle" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         {%- if cart.item_count > 0 -%}
           <span class="cart-count">{{ cart.item_count }}</span>
@@ -147,6 +183,22 @@
     </div>
   </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cartToggle = document.getElementById('cart-toggle');
+    if (cartToggle) {
+      cartToggle.addEventListener('click', function(e) {
+        var drawer = document.getElementById('cart-drawer');
+        if (drawer) {
+          e.preventDefault();
+          drawer.classList.add('is-open');
+          document.body.classList.add('cart-drawer-open');
+        }
+      });
+    }
+  });
+</script>
 
 {% schema %}
 {

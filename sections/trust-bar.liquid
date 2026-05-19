@@ -29,18 +29,51 @@
     flex-shrink: 0;
     color: var(--color-accent);
   }
+  .trust-bar__item {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .trust-bar__item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 
 <section class="trust-bar">
   <div class="trust-bar__inner">
     {%- for block in section.blocks -%}
-      <div class="trust-bar__item" {{ block.shopify_attributes }}>
-        <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div class="trust-bar__item" style="transition-delay: {{ forloop.index0 | times: 100 }}ms;" {{ block.shopify_attributes }}>
+        {%- assign badge_text = block.settings.text | downcase -%}
+        {%- if badge_text contains 'made in usa' -%}
+          <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        {%- elsif badge_text contains 'coa' or badge_text contains 'tested' -%}
+          <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+        {%- elsif badge_text contains 'guarantee' -%}
+          <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        {%- elsif badge_text contains 'sealed' or badge_text contains 'evaporation' -%}
+          <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        {%- elsif badge_text contains 'shipping' -%}
+          <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        {%- else -%}
+          <svg class="trust-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        {%- endif -%}
         {{ block.settings.text }}
       </div>
     {%- endfor -%}
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var items = document.querySelectorAll('.trust-bar__item');
+    if (!items.length) return;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.2 });
+    items.forEach(function(el) { observer.observe(el); });
+  });
+</script>
 
 {% schema %}
 {

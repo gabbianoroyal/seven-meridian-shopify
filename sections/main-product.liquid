@@ -145,6 +145,148 @@
     color: var(--color-text-light);
     line-height: 1.7;
   }
+  .product-info__stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .product-info__stars svg { width: 18px; height: 18px; fill: #C8963E; }
+  .product-info__stars span {
+    font-size: 13px;
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+  .product-info__urgency {
+    font-size: 13px;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .product-info__urgency svg { width: 14px; height: 14px; fill: var(--color-accent); }
+  .subscribe-toggle {
+    background: #F8F7F4;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.2s;
+  }
+  .subscribe-toggle.is-active { border-color: var(--color-accent); }
+  .subscribe-toggle__label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  .subscribe-toggle__price {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+  .subscribe-toggle__check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .subscribe-toggle.is-active .subscribe-toggle__check {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+  }
+  .subscribe-toggle__check svg { width: 12px; height: 12px; fill: #fff; opacity: 0; }
+  .subscribe-toggle.is-active .subscribe-toggle__check svg { opacity: 1; }
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .trust-badge svg { width: 18px; height: 18px; fill: var(--color-accent); flex-shrink: 0; }
+  .cross-sell {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+  }
+  .cross-sell__title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .cross-sell__placeholder {
+    background: #F8F7F4;
+    border: 1px dashed var(--color-border);
+    padding: 32px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-text-light);
+    border-radius: 4px;
+  }
+  /* Sticky ATC bar */
+  .sticky-atc-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+    padding: 12px 24px;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  .sticky-atc-bar.is-visible { transform: translateY(0); }
+  .sticky-atc-bar__info {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+  .sticky-atc-bar__btn {
+    padding: 12px 32px;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .sticky-atc-bar__btn:hover { background: #0d2d52; }
+  @media (min-width: 769px) {
+    .sticky-atc-bar { display: none; }
+  }
   @media (max-width: 768px) {
     .product-page { grid-template-columns: 1fr; }
   }
@@ -183,6 +325,16 @@
 
     <h1 class="product-info__title">{{ product.title }}</h1>
 
+    <div class="product-info__stars">
+      {% for i in (1..5) %}<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{% endfor %}
+      <span>from heritage oil users</span>
+    </div>
+
+    <div class="product-info__urgency">
+      <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+      Ships same day &middot; Order within <span id="urgency-countdown"></span>
+    </div>
+
     <div class="product-info__price-row">
       <span class="product-info__price">{{ current_variant.price | money }}</span>
       {%- if product.selling_plan_groups.size > 0 -%}
@@ -193,17 +345,47 @@
     {%- form 'product', product -%}
       <div class="product-info__form">
         <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+        <!-- Subscribe & Save toggle -->
+        <div class="subscribe-toggle" id="subscribe-toggle" onclick="this.classList.toggle('is-active')">
+          <div style="display:flex;align-items:center;">
+            <div class="subscribe-toggle__check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+            <span class="subscribe-toggle__label">Subscribe &amp; Save 15%</span>
+          </div>
+          <span class="subscribe-toggle__price">$21.24/bottle</span>
+        </div>
+
         <div class="product-info__quantity">
           <label for="quantity">Qty</label>
           <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
         </div>
-        <button type="submit" class="add-to-cart-btn" {% unless current_variant.available %}disabled{% endunless %}>
+        <button type="submit" class="add-to-cart-btn" id="main-atc-btn" {% unless current_variant.available %}disabled{% endunless %}>
           {%- if current_variant.available -%}
             Add to Cart — {{ current_variant.price | money }}
           {%- else -%}
             Sold Out
           {%- endif -%}
         </button>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 2a2.5 2.5 0 010 5 2.5 2.5 0 010-5z"/></svg>
+            Made in USA
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            COA Tested
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            90-Day Guarantee
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 3c1.66 0 3 1.34 3 3v2H9V6c0-1.66 1.34-3 3-3zm0 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+            Free Shipping on Subs
+          </div>
+        </div>
       </div>
     {%- endform -%}
 
@@ -233,17 +415,57 @@
         </div>
       </details>
     </div>
+
+    <!-- Cross-sell placeholder -->
+    <div class="cross-sell">
+      <h3 class="cross-sell__title">Complete Your Routine</h3>
+      <div class="cross-sell__placeholder">Cross-sell products will appear here</div>
+    </div>
   </div>
 </section>
 
+<!-- Sticky Add to Cart bar (mobile) -->
+<div class="sticky-atc-bar" id="sticky-atc-bar">
+  <span class="sticky-atc-bar__info">{{ product.title }} — {{ current_variant.price | money }}</span>
+  <button class="sticky-atc-bar__btn" onclick="document.getElementById('main-atc-btn').click()">Add to Cart</button>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Thumbnail gallery
   document.querySelectorAll('.product-gallery__thumb').forEach(function(thumb) {
     thumb.addEventListener('click', function() {
       var mainImg = document.getElementById('product-main-image');
       if (mainImg) mainImg.src = this.dataset.imageUrl;
     });
   });
+
+  // Sticky ATC bar — show when main button scrolls out of view
+  var mainBtn = document.getElementById('main-atc-btn');
+  var stickyBar = document.getElementById('sticky-atc-bar');
+  if (mainBtn && stickyBar) {
+    var observer = new IntersectionObserver(function(entries) {
+      stickyBar.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    observer.observe(mainBtn);
+  }
+
+  // Urgency countdown — hours until 3 PM cutoff
+  var countdownEl = document.getElementById('urgency-countdown');
+  if (countdownEl) {
+    function updateCountdown() {
+      var now = new Date();
+      var cutoff = new Date();
+      cutoff.setHours(15, 0, 0, 0);
+      if (now >= cutoff) { cutoff.setDate(cutoff.getDate() + 1); }
+      var diff = cutoff - now;
+      var h = Math.floor(diff / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      countdownEl.textContent = h + 'h ' + m + 'm';
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  }
 });
 </script>
 

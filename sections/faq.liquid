@@ -50,13 +50,20 @@
   <div class="faq-section__inner">
     <h2 class="faq-section__title">{{ section.settings.heading }}</h2>
     {%- for block in section.blocks -%}
-      <details class="faq-item" {{ block.shopify_attributes }} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details class="faq-item" {{ block.shopify_attributes }} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" {% if forloop.first %}open{% endif %}>
         <summary itemprop="name">{{ block.settings.question }}</summary>
         <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div itemprop="text">{{ block.settings.answer }}</div>
         </div>
       </details>
     {%- endfor -%}
+
+    <!-- Bottom CTA -->
+    <div style="text-align:center;margin-top:40px;">
+      <p style="font-size:15px;color:var(--color-text-light);margin-bottom:16px;">Still have questions? We're here to help.</p>
+      <a href="/pages/contact" class="btn-secondary" style="margin-right:12px;">Contact Us</a>
+      <a href="/collections/all" class="btn-primary">Shop Now</a>
+    </div>
   </div>
 </section>
 

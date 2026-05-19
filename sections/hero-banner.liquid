@@ -63,6 +63,24 @@
     transition: opacity 0.2s;
   }
   .btn-primary:hover { opacity: 0.9; }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(196,164,105,0.5); }
+    50% { box-shadow: 0 0 16px 4px rgba(196,164,105,0.35); }
+  }
+  .btn-primary--pulse { animation: pulse-glow 2s ease-in-out infinite; }
+  .hero-proof {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+  }
+  .hero-proof span { color: var(--color-accent); font-weight: 600; }
+  .hero-urgency {
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.6);
+  }
+  .hero-urgency span { color: var(--color-accent); }
   .btn-secondary {
     display: inline-block;
     padding: 14px 32px;
@@ -92,7 +110,8 @@
     .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 48px 24px; }
     .hero-content { max-width: 100%; }
     .hero-actions { justify-content: center; }
-    .hero-image { order: -1; }
+    .hero-image { order: -1; margin-bottom: 8px; }
+    .hero-image img { max-height: 360px; width: auto; }
   }
 </style>
 
@@ -102,13 +121,15 @@
       <p class="hero-est">{{ section.settings.est_text }}</p>
       <h1 class="hero-title">{{ section.settings.heading }}</h1>
       <p class="hero-subtitle">{{ section.settings.subheading }}</p>
+      <p class="hero-proof">Starting at <span>$24.99</span> · <span>4.9★</span> from heritage oil users</p>
       <div class="hero-actions">
         {%- if section.settings.button_text != blank -%}
-          <a href="{{ section.settings.button_link }}" class="btn-primary">{{ section.settings.button_text }}</a>
+          <a href="{{ section.settings.button_link }}" class="btn-primary btn-primary--pulse">{{ section.settings.button_text }}</a>
         {%- endif -%}
         {%- if section.settings.button_secondary_text != blank -%}
           <a href="{{ section.settings.button_secondary_link }}" class="btn-secondary">{{ section.settings.button_secondary_text }}</a>
         {%- endif -%}
+        <p class="hero-urgency"><span>Free shipping</span> on subscriptions · <span>90-day guarantee</span></p>
       </div>
     </div>
     <div class="hero-image">
@@ -152,7 +173,7 @@
       "type": "text",
       "id": "button_text",
       "label": "Primary button text",
-      "default": "Shop Now"
+      "default": "Try It — $24.99"
     },
     {
       "type": "url",

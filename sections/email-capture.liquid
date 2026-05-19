@@ -1,12 +1,31 @@
 <style>
   .email-capture {
     padding: 64px 24px;
-    background: var(--color-background);
+    background: #F8F7F4;
     text-align: center;
+    border-top: 3px solid var(--color-accent);
+    border-bottom: 3px solid var(--color-accent);
+    position: relative;
+  }
+  .email-capture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(197,165,114,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(197,165,114,0.06) 0%, transparent 50%);
+    pointer-events: none;
   }
   .email-capture__inner {
     max-width: 520px;
     margin: 0 auto;
+    position: relative;
+  }
+  .email-capture__social-proof {
+    font-size: 13px;
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
   }
   .email-capture__title {
     font-family: var(--font-heading);
@@ -17,6 +36,12 @@
   .email-capture__desc {
     font-size: 15px;
     color: var(--color-text-light);
+    margin: 0 0 8px;
+  }
+  .email-capture__incentive {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-primary);
     margin: 0 0 24px;
   }
   .email-capture__form {
@@ -42,6 +67,34 @@
     cursor: pointer;
     white-space: nowrap;
   }
+  .email-capture__trust {
+    font-size: 12px;
+    color: var(--color-text-light);
+    margin-top: 12px;
+    opacity: 0.7;
+  }
+  .email-capture__success {
+    display: none;
+    padding: 24px;
+    text-align: center;
+  }
+  .email-capture__success-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .email-capture__success-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+  .email-capture__success-msg {
+    font-size: 14px;
+    color: var(--color-text-light);
+  }
+  .email-capture__form-wrap.is-success .email-capture__form { display: none; }
+  .email-capture__form-wrap.is-success .email-capture__trust { display: none; }
+  .email-capture__form-wrap.is-success .email-capture__success { display: block; }
   @media (max-width: 480px) {
     .email-capture__form { flex-direction: column; }
   }
@@ -49,17 +102,37 @@
 
 <section class="email-capture">
   <div class="email-capture__inner">
+    <p class="email-capture__social-proof">Join 500+ botanical wellness enthusiasts</p>
     <h2 class="email-capture__title">{{ section.settings.heading }}</h2>
     <p class="email-capture__desc">{{ section.settings.description }}</p>
+    <p class="email-capture__incentive">Your first bottle for just $22.49</p>
     {% form 'customer', id: 'email-capture' %}
-      <div class="email-capture__form">
-        <input type="email" name="contact[email]" placeholder="Enter your email" aria-label="Email address" required>
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <button type="submit">{{ section.settings.button_text }}</button>
+      <div class="email-capture__form-wrap" id="email-capture-wrap">
+        <div class="email-capture__form">
+          <input type="email" name="contact[email]" placeholder="Enter your email" aria-label="Email address" required>
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <button type="submit">{{ section.settings.button_text }}</button>
+        </div>
+        <p class="email-capture__trust">🔒 No spam. Unsubscribe anytime.</p>
+        <div class="email-capture__success">
+          <div class="email-capture__success-icon">✓</div>
+          <p class="email-capture__success-title">You're in!</p>
+          <p class="email-capture__success-msg">Check your inbox for your 10% off code.</p>
+        </div>
       </div>
     {% endform %}
   </div>
 </section>
+
+<script>
+  (function() {
+    var form = document.getElementById('email-capture');
+    if (form && form.querySelector('.errors') === null && window.location.search.indexOf('customer_posted=true') > -1) {
+      var wrap = document.getElementById('email-capture-wrap');
+      if (wrap) wrap.classList.add('is-success');
+    }
+  })();
+</script>
 
 {% schema %}
 {

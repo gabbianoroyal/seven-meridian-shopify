@@ -58,6 +58,33 @@
     color: var(--color-text-light);
     line-height: 1.5;
   }
+  .oil-card__bar {
+    margin-top: 8px;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .oil-card__bar-fill {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .seven-oils__footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .seven-oils__note {
+    font-size: 14px;
+    color: var(--color-text-light);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .seven-oils__note strong {
+    color: var(--color-accent);
+    font-style: normal;
+  }
 </style>
 
 <section class="seven-oils">
@@ -70,12 +97,20 @@
       {%- for block in section.blocks -%}
         <div class="oil-card" {{ block.shopify_attributes }}>
           <span class="oil-card__pct">{{ block.settings.percentage }}</span>
-          <div>
+          <div style="flex:1;">
             <div class="oil-card__name">{{ block.settings.name }}</div>
             <div class="oil-card__role">{{ block.settings.role }}</div>
+            {%- assign pct_num = block.settings.percentage | remove: '%' | remove: '<' | plus: 0 -%}
+            <div class="oil-card__bar">
+              <div class="oil-card__bar-fill" style="width: {% if pct_num > 0 %}{{ pct_num }}%{% else %}2%{% endif %};"></div>
+            </div>
           </div>
         </div>
       {%- endfor -%}
+    </div>
+    <div class="seven-oils__footer">
+      <p class="seven-oils__note">Total active concentration: <strong>52%</strong> — significantly stronger than reformulated alternatives</p>
+      <a href="/collections/all" class="btn-primary">Experience the full-strength formula &rarr; Shop Now</a>
     </div>
   </div>
 </section>

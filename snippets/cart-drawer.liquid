@@ -82,6 +82,97 @@
     color: var(--color-text);
     margin-top: 4px;
   }
+  .cart-drawer__item-details {
+    flex: 1;
+    position: relative;
+  }
+  .cart-drawer__item-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--color-text-light);
+    padding: 0 4px;
+    line-height: 1;
+  }
+  .cart-drawer__item-remove:hover { color: #c00; }
+  .cart-drawer__qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .cart-drawer__qty-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--color-border);
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  .cart-drawer__qty-btn:hover { background: #F8F7F4; }
+  .cart-drawer__qty-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 20px;
+    text-align: center;
+  }
+  .cart-drawer__sub-upsell {
+    background: linear-gradient(135deg, #f9f4ec, #f0ead6);
+    border: 1px solid var(--color-accent);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: center;
+  }
+  .cart-drawer__sub-upsell a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  .cart-drawer__shipping-track {
+    width: 100%;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .cart-drawer__shipping-fill {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+  .cart-drawer__delivery {
+    font-size: 12px;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-top: 8px;
+  }
+  .cart-drawer__secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-text-light);
+    margin-top: 10px;
+  }
+  .cart-drawer__secure svg { width: 14px; height: 14px; fill: var(--color-text-light); }
   .cart-drawer__footer {
     padding: 20px 24px;
     border-top: 1px solid var(--color-border);
@@ -147,9 +238,15 @@
               {{ item.image | image_url: width: 150 | image_tag: loading: 'lazy' }}
             {%- endif -%}
           </div>
-          <div>
+          <div class="cart-drawer__item-details">
+            <a href="/cart/change?id={{ item.key }}&quantity=0" class="cart-drawer__item-remove" aria-label="Remove item">&times;</a>
             <div class="cart-drawer__item-title">{{ item.product.title }}</div>
-            <div class="cart-drawer__item-price">{{ item.final_line_price | money }} &middot; Qty {{ item.quantity }}</div>
+            <div class="cart-drawer__item-price">{{ item.final_line_price | money }}</div>
+            <div class="cart-drawer__qty-controls">
+              <a href="/cart/change?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}" class="cart-drawer__qty-btn" aria-label="Decrease quantity">&minus;</a>
+              <span class="cart-drawer__qty-val">{{ item.quantity }}</span>
+              <a href="/cart/change?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}" class="cart-drawer__qty-btn" aria-label="Increase quantity">&plus;</a>
+            </div>
           </div>
         </div>
       {%- endfor -%}
@@ -157,22 +254,42 @@
   </div>
   {%- if cart.item_count > 0 -%}
     <div class="cart-drawer__footer">
-      {%- assign remaining = settings.free_shipping_threshold | times: 100 | minus: cart.total_price -%}
+      <!-- Subscription upsell banner -->
+      <div class="cart-drawer__sub-upsell">
+        Switch to <a href="/products/seven-meridian-oil">Subscribe &amp; Save</a> &mdash; get 15% off this order
+      </div>
+
+      {%- assign threshold_cents = settings.free_shipping_threshold | times: 100 -%}
+      {%- assign remaining = threshold_cents | minus: cart.total_price -%}
       {%- if remaining > 0 -%}
+        {%- assign pct = cart.total_price | times: 100 | divided_by: threshold_cents -%}
         <div class="cart-drawer__shipping-bar">
           Add {{ remaining | money }} more for free shipping
+          <div class="cart-drawer__shipping-track"><div class="cart-drawer__shipping-fill" style="width:{{ pct }}%"></div></div>
         </div>
       {%- else -%}
         <div class="cart-drawer__shipping-bar">
           You qualify for free shipping!
+          <div class="cart-drawer__shipping-track"><div class="cart-drawer__shipping-fill" style="width:100%"></div></div>
         </div>
       {%- endif -%}
+
+      <!-- Estimated delivery -->
+      {%- assign delivery_days_min = 3 -%}
+      {%- assign delivery_days_max = 5 -%}
+      <div class="cart-drawer__delivery">
+        Estimated delivery: {{ 'now' | date: '%s' | plus: 259200 | date: '%b %d' }} – {{ 'now' | date: '%s' | plus: 432000 | date: '%b %d' }}
+      </div>
+
       <div class="cart-drawer__total">
         <span>Subtotal</span>
         <span>{{ cart.total_price | money }}</span>
       </div>
       <a href="/checkout" class="cart-drawer__checkout">Checkout</a>
-      <div class="cart-drawer__sub-hint">Subscribe &amp; Save 15% — just $21.24/bottle</div>
+      <div class="cart-drawer__secure">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3-9H9V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2z"/></svg>
+        Secure checkout &middot; SSL encrypted
+      </div>
     </div>
   {%- endif -%}
 </div>

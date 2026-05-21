@@ -15,7 +15,7 @@
         "est_text": "EST. 2026 · SEVEN-OIL CONCENTRATE",
         "heading": "<p>Seven Oils. One Heritage Formula. <em>Restored.</em></p>",
         "subheading": "The botanical relief oil long-time users have been waiting for — at full strength, in a sealed bottle that won't evaporate, delivered to your door.",
-        "image": "shopify://shop_images/Generated_image_1.png",
+        "image": "shopify://shop_images/seven-meridian-botanical-relief-oil-10ml-bottle-transparent.png",
         "button_text": "Shop Now",
         "button_link": "",
         "button_secondary_text": "Subscribe & Save 15%",
@@ -292,7 +292,9 @@
       "settings": {
         "heading": "See the Difference",
         "col_left": "Typical 5ml Heritage Bottle",
-        "col_right": "Seven Meridian"
+        "col_right": "Seven Meridian",
+        "cta_text": "Shop Now →",
+        "cta_link": ""
       }
     },
     "subscription": {

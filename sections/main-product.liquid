@@ -405,6 +405,41 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(mainBtn);
   }
 
+  // Dynamic ATC price — update when subscription is toggled
+  var atcBtn = document.getElementById('main-atc-btn');
+  var oneTimePrice = {{ current_variant.price }};
+  var subDiscount = 0.85; // 15% off
+  var subPrice = Math.round(oneTimePrice * subDiscount);
+  function formatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2);
+  }
+  function updateAtcPrice() {
+    if (!atcBtn) return;
+    var subWidget = document.querySelector('.subscriptions_app_embed_block');
+    if (!subWidget) return;
+    // Check if subscription radio is selected
+    var subRadio = subWidget.querySelector('input[type="radio"][value*="subscribe"], input[type="radio"]:not([value="onetime"]):not([value="one-time"])');
+    var oneTimeRadio = subWidget.querySelector('input[type="radio"][value="onetime"], input[type="radio"][value="one-time"]');
+    var isSub = false;
+    // Try checking all radios in the widget
+    var allRadios = subWidget.querySelectorAll('input[type="radio"]');
+    if (allRadios.length >= 2) {
+      // First radio is usually one-time, second is subscribe
+      isSub = allRadios[1] && allRadios[1].checked;
+    }
+    var price = isSub ? subPrice : oneTimePrice;
+    atcBtn.textContent = 'Add to Cart — ' + formatMoney(price);
+  }
+  // Observe changes in the subscription widget
+  var subBlock = document.querySelector('.subscriptions_app_embed_block');
+  if (subBlock) {
+    var subObserver = new MutationObserver(function() { setTimeout(updateAtcPrice, 50); });
+    subObserver.observe(subBlock, { subtree: true, attributes: true, childList: true });
+    // Also listen for click events on the widget
+    subBlock.addEventListener('change', updateAtcPrice);
+    subBlock.addEventListener('click', function() { setTimeout(updateAtcPrice, 100); });
+  }
+
   // Urgency countdown — hours until 3 PM cutoff
   var countdownEl = document.getElementById('urgency-countdown');
   if (countdownEl) {

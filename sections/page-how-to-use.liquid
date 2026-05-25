@@ -1,0 +1,211 @@
+{%- comment -%}Seven Meridian — How to Use Page{%- endcomment -%}
+
+<style>
+  .howto-page { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
+  .howto-hero { text-align: center; margin-bottom: 48px; }
+  .howto-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .howto-hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .howto-quick {
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 56px;
+    color: #fff;
+  }
+  .howto-quick h2 { font-family: var(--font-heading); font-size: 20px; margin: 0 0 8px; }
+  .howto-quick p { font-size: 15px; color: rgba(255,255,255,0.8); margin: 0; }
+  .howto-quick span { color: var(--color-accent); font-weight: 600; }
+
+  .howto-uses { margin-bottom: 56px; }
+  .howto-use {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .howto-use:first-child { border-top: 1px solid var(--color-border); }
+  .howto-use-icon {
+    width: 72px;
+    height: 72px;
+    background: #F8F7F4;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .howto-use-icon svg { width: 32px; height: 32px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+  .howto-use h3 { font-family: var(--font-heading); font-size: 20px; color: var(--color-primary); margin: 0 0 4px; }
+  .howto-use .drops { font-size: 13px; font-weight: 600; color: var(--color-accent); margin-bottom: 8px; }
+  .howto-use p { font-size: 14px; line-height: 1.7; color: var(--color-text); margin: 0 0 8px; }
+  .howto-use .tip { font-size: 13px; color: var(--color-text-light); font-style: italic; }
+
+  .howto-tips {
+    background: #F8F7F4;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 56px;
+  }
+  .howto-tips h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin: 0 0 24px; text-align: center; }
+  .howto-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .howto-tip-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .howto-tip-card h4 { font-size: 14px; font-weight: 700; color: var(--color-primary); margin: 0 0 6px; }
+  .howto-tip-card p { font-size: 13px; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+  .howto-safety {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 56px;
+  }
+  .howto-safety h2 { font-family: var(--font-heading); font-size: 20px; color: var(--color-primary); margin: 0 0 16px; }
+  .howto-safety ul { padding-left: 20px; margin: 0; }
+  .howto-safety li { font-size: 14px; line-height: 1.8; color: var(--color-text); }
+
+  .howto-cta {
+    text-align: center;
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 48px 32px;
+  }
+  .howto-cta h2 { font-family: var(--font-heading); font-size: 28px; color: #fff; margin: 0 0 12px; }
+  .howto-cta p { font-size: 15px; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+  .howto-cta .btn-primary { display: inline-block; padding: 16px 40px; background: var(--color-accent); color: var(--color-primary); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  @media (max-width: 600px) {
+    .howto-use { grid-template-columns: 56px 1fr; gap: 16px; }
+    .howto-use-icon { width: 56px; height: 56px; }
+    .howto-tips-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="howto-page">
+  <div class="howto-hero">
+    <h1>How to Use Seven Meridian</h1>
+    <p>Four targeted applications, one versatile bottle. Here's how to get the most from your botanical relief oil.</p>
+  </div>
+
+  <div class="howto-quick">
+    <h2>The Basics</h2>
+    <p>Apply <span>1–4 drops</span> to the desired area and rub in gently. Cooling sensation begins within <span>60 seconds</span> and lasts <span>4+ hours</span>.</p>
+  </div>
+
+  <div class="howto-uses">
+    <div class="howto-use">
+      <div class="howto-use-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <div>
+        <h3>Sore Muscles</h3>
+        <div class="drops">2–3 drops · Rub in firmly</div>
+        <p>Apply after workouts, long days on your feet, or any time muscles feel tight and overworked. Massage into the affected area using firm, circular motions. The menthol delivers immediate cooling relief while the camphor and wintergreen provide sustained warming comfort.</p>
+        <span class="tip">Pro tip: Apply right after a warm shower when pores are open for faster absorption.</span>
+      </div>
+    </div>
+
+    <div class="howto-use">
+      <div class="howto-use-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <div>
+        <h3>Tension Headaches</h3>
+        <div class="drops">1 drop · Dilute with carrier oil</div>
+        <p>Mix one drop with a carrier oil (like coconut or jojoba oil) and apply to the temples using gentle circular pressure. Take a deep breath and let the eucalyptus and lavender aromatics ease tension. The cooling sensation helps relax tight areas around the forehead and temples.</p>
+        <span class="tip">Important: Always dilute before applying near the face. Avoid contact with eyes, nose, and mouth.</span>
+      </div>
+    </div>
+
+    <div class="howto-use">
+      <div class="howto-use-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12h8M12 8v8"/></svg>
+      </div>
+      <div>
+        <h3>Sinus &amp; Respiratory Support</h3>
+        <div class="drops">1 drop · Under nose or on chest</div>
+        <p>Place one drop under the nose or on the upper chest. The eucalyptus and wintergreen oils support clear breathing and provide aromatic relief during congestion. Breathe deeply and let the vapors work naturally.</p>
+        <span class="tip">Combine with steam: Add a drop to hot water in a bowl and inhale the steam with a towel over your head for intensified aromatic support.</span>
+      </div>
+    </div>
+
+    <div class="howto-use">
+      <div class="howto-use-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div>
+        <h3>Joint Comfort</h3>
+        <div class="drops">3–4 drops · Massage twice daily</div>
+        <p>Apply 3–4 drops to stiff or uncomfortable joints and massage thoroughly. For ongoing comfort, use twice daily — once in the morning and once before bed. The cool-to-warm transition works through the layers to support joint mobility and comfort throughout the day.</p>
+        <span class="tip">Consistency is key: Regular twice-daily use provides the best ongoing support for joint comfort.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="howto-tips">
+    <h2>Tips for Best Results</h2>
+    <div class="howto-tips-grid">
+      <div class="howto-tip-card">
+        <h4>Start Small</h4>
+        <p>Begin with 1–2 drops and increase as needed. The formula is highly concentrated — a little goes a long way.</p>
+      </div>
+      <div class="howto-tip-card">
+        <h4>Patch Test First</h4>
+        <p>Apply one drop to a small area on the forearm and wait 15 minutes before first use to check for sensitivity.</p>
+      </div>
+      <div class="howto-tip-card">
+        <h4>Store Properly</h4>
+        <p>Keep the cap tightly sealed between uses. Store in a cool, dry place away from direct sunlight. The Polycone liner maintains potency for 24+ months.</p>
+      </div>
+      <div class="howto-tip-card">
+        <h4>Layer for Intensity</h4>
+        <p>For stronger effect, apply a second round of drops after the first application has absorbed — usually after 5–10 minutes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="howto-safety">
+    <h2>Safety &amp; Precautions</h2>
+    <ul>
+      <li>For external use only. Do not ingest.</li>
+      <li>Avoid contact with eyes, nose, mouth, and broken skin.</li>
+      <li>Always dilute with carrier oil before applying to the face or temples.</li>
+      <li>Contains wintergreen and camphor — consult a healthcare professional before use during pregnancy, nursing, or while under medical care.</li>
+      <li>Not recommended for children under 2 years of age.</li>
+      <li>Discontinue use if irritation occurs.</li>
+      <li>Keep out of reach of children.</li>
+    </ul>
+  </div>
+
+  <div class="howto-cta">
+    <h2>Ready to Experience the Difference?</h2>
+    <p>10ml of full-strength botanical relief — starts working in 60 seconds.</p>
+    <a href="/products/botanical-relief-oil-10ml" class="btn-primary">Shop Now — $24.99</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How to Use Page",
+  "settings": [],
+  "presets": [{ "name": "How to Use Page" }]
+}
+{% endschema %}

@@ -1,0 +1,211 @@
+{%- comment -%}Seven Meridian — Our Story Page{%- endcomment -%}
+
+<style>
+  .story-page { max-width: 800px; margin: 0 auto; padding: 60px 24px 80px; }
+  .story-hero { text-align: center; margin-bottom: 48px; }
+  .story-hero .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+  .story-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .story-hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .story-section { margin-bottom: 48px; }
+  .story-section h2 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .story-section p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin: 0 0 16px;
+  }
+
+  .story-highlight {
+    background: #F8F7F4;
+    border-left: 4px solid var(--color-accent);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .story-highlight p {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .story-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 48px 0;
+  }
+  .story-value {
+    text-align: center;
+    padding: 28px 20px;
+    background: #F8F7F4;
+    border-radius: 10px;
+  }
+  .story-value-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .story-value-icon svg { width: 24px; height: 24px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+  .story-value h3 { font-size: 15px; font-weight: 700; color: var(--color-primary); margin: 0 0 6px; }
+  .story-value p { font-size: 13px; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+  .story-timeline { margin: 48px 0; }
+  .story-timeline h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin: 0 0 32px; text-align: center; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .timeline-year {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-accent);
+    padding-top: 2px;
+  }
+  .timeline-item h3 { font-size: 15px; font-weight: 700; color: var(--color-primary); margin: 0 0 4px; }
+  .timeline-item p { font-size: 14px; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+  .story-cta {
+    text-align: center;
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 48px 32px;
+    margin-top: 56px;
+  }
+  .story-cta h2 { font-family: var(--font-heading); font-size: 28px; color: #fff; margin: 0 0 12px; }
+  .story-cta p { font-size: 15px; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+  .story-cta .btn-primary { display: inline-block; padding: 16px 40px; background: var(--color-accent); color: var(--color-primary); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  @media (max-width: 600px) {
+    .story-values { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 60px 1fr; }
+  }
+</style>
+
+<div class="story-page">
+  <div class="story-hero">
+    <span class="badge">EST. 2026 · Sunrise, Florida</span>
+    <h1>The Story Behind Seven Meridian</h1>
+    <p>We didn't set out to create a new product. We set out to restore one that long-time users missed — and make it better.</p>
+  </div>
+
+  <div class="story-section">
+    <h2>A Formula Worth Preserving</h2>
+    <p>For decades, a specific 7-oil blend has been a staple in households around the world. People who used it swore by it — for sore muscles, tension headaches, sinus relief, and joint comfort. It was the kind of product that got passed down through families.</p>
+    <p>But over the years, things changed. The formula was quietly diluted. The bottle shrank from 10ml to 5ml. The price went up. Distribution moved through multi-level networks, adding markup at every tier. Longtime users noticed the difference — the oil wasn't as strong, the bottle didn't last as long, and the experience wasn't what it used to be.</p>
+  </div>
+
+  <div class="story-highlight">
+    <p>We asked a simple question: What if we restored the original 7-oil architecture at full concentration, sealed it properly, and shipped it directly — no middlemen, no markups?</p>
+  </div>
+
+  <div class="story-section">
+    <h2>Built Different on Purpose</h2>
+    <p>Seven Meridian is our answer. Every decision we made was intentional:</p>
+    <p>We restored the full 52% active concentration that heritage users remember. We doubled the bottle to 10ml — giving you twice the volume at a better per-ounce value. We sealed each bottle with an aluminum cap and Polycone liner, solving the evaporation problem that plagues standard essential oil packaging. And we ship direct to your door — no consultants, no affiliates, no middle tiers inflating the price.</p>
+    <p>The result is a botanical relief oil that works the way it's supposed to — strong, effective, and built to last.</p>
+  </div>
+
+  <div class="story-values">
+    <div class="story-value">
+      <div class="story-value-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Full Transparency</h3>
+      <p>Every ingredient, every percentage, every batch COA-tested and published. No proprietary blends hiding behind vague labels.</p>
+    </div>
+    <div class="story-value">
+      <div class="story-value-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <h3>No Compromises</h3>
+      <p>Full heritage concentration, premium sealed packaging, and honest pricing. We don't cut corners to cut costs.</p>
+    </div>
+    <div class="story-value">
+      <div class="story-value-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Direct to You</h3>
+      <p>No MLM network. No affiliate markup. We ship directly from our facility, keeping quality high and prices fair.</p>
+    </div>
+  </div>
+
+  <div class="story-timeline">
+    <h2>Our Journey</h2>
+    <div class="timeline-item">
+      <div class="timeline-year">2024</div>
+      <div>
+        <h3>The Idea</h3>
+        <p>Noticed long-time heritage oil users were frustrated by reformulated, diluted versions and inflated pricing through MLM channels.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2025</div>
+      <div>
+        <h3>Research &amp; Development</h3>
+        <p>Spent a year perfecting the formula — sourcing pharmaceutical-grade ingredients, testing concentrations, and engineering the sealed packaging system.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div>
+        <h3>Seven Meridian Launches</h3>
+        <p>AT USA Investments LLC launches Seven Meridian from Sunrise, Florida — full-strength heritage formula, direct-to-consumer, no middlemen.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-section">
+    <h2>Our Promise</h2>
+    <p>We believe botanical relief should be effective, accessible, and honestly priced. Every bottle of Seven Meridian is backed by our 90-day satisfaction guarantee — if you're not completely satisfied, we'll give you a full refund, no questions asked.</p>
+    <p>We're a small, US-based team with a straightforward mission: make the best botanical relief oil available and sell it at a fair price. That's it.</p>
+  </div>
+
+  <div class="story-cta">
+    <h2>Try the Difference Yourself</h2>
+    <p>Full-strength heritage formula. 10ml sealed bottle. 90-day guarantee. Delivered to your door.</p>
+    <a href="/products/botanical-relief-oil-10ml" class="btn-primary">Shop Now — $24.99</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Story Page",
+  "settings": [],
+  "presets": [{ "name": "Our Story Page" }]
+}
+{% endschema %}

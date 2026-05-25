@@ -1,0 +1,323 @@
+{%- comment -%}Seven Meridian — Our Formula Page{%- endcomment -%}
+
+<style>
+  .formula-page { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
+  .formula-hero { text-align: center; margin-bottom: 56px; }
+  .formula-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .formula-hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .formula-philosophy {
+    background: #F8F7F4;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 56px;
+    text-align: center;
+  }
+  .formula-philosophy h2 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .formula-philosophy p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-text);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .formula-oils-heading {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .formula-oils-heading h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--color-primary);
+    margin: 0 0 8px;
+  }
+  .formula-oils-heading p {
+    font-size: 15px;
+    color: var(--color-text-light);
+  }
+  .formula-oil-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .formula-oil-card:first-child { border-top: 1px solid var(--color-border); }
+  .formula-oil-pct {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-align: center;
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .formula-oil-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 4px;
+  }
+  .formula-oil-latin {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--color-text-light);
+    margin: 0 0 8px;
+  }
+  .formula-oil-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin: 0;
+  }
+  .formula-totals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 48px 0;
+  }
+  .formula-stat {
+    text-align: center;
+    padding: 24px 16px;
+    background: var(--color-primary);
+    border-radius: 8px;
+    color: #fff;
+  }
+  .formula-stat-num {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+  }
+  .formula-stat-label {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    display: block;
+    opacity: 0.8;
+  }
+  .formula-quality {
+    text-align: center;
+    margin: 48px 0;
+  }
+  .formula-quality h2 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--color-primary);
+    margin: 0 0 24px;
+  }
+  .formula-badges {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .formula-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 140px;
+  }
+  .formula-badge-icon {
+    width: 48px;
+    height: 48px;
+    background: #F8F7F4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .formula-badge-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-accent);
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .formula-badge-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: center;
+  }
+  .formula-cta {
+    text-align: center;
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 48px 32px;
+    margin-top: 56px;
+  }
+  .formula-cta h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: #fff;
+    margin: 0 0 12px;
+  }
+  .formula-cta p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    margin: 0 0 24px;
+  }
+  .formula-cta .btn-primary { display: inline-block; padding: 16px 40px; background: var(--color-accent); color: var(--color-primary); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; }
+  @media (max-width: 600px) {
+    .formula-oil-card { grid-template-columns: 60px 1fr; gap: 16px; }
+    .formula-totals { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="formula-page">
+  <div class="formula-hero">
+    <h1>Seven Oils. One Precise Blend.</h1>
+    <p>Every drop of Seven Meridian contains seven botanical oils at full heritage concentration — the same architecture long-time users remember, restored to its original strength.</p>
+  </div>
+
+  <div class="formula-philosophy">
+    <h2>Why Full Concentration Matters</h2>
+    <p>Many heritage-style oils have been quietly reformulated and diluted over the years. Seven Meridian restores the original 7-oil architecture at full therapeutic concentration — 52% total active botanicals versus the 40–48% found in reformulated alternatives. You feel the difference from the first drop.</p>
+  </div>
+
+  <div class="formula-oils-heading">
+    <h2>The Seven Oils</h2>
+    <p>Each oil selected for a specific role in the heritage formula</p>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">48%</div>
+    <div>
+      <h3 class="formula-oil-name">Safflower Seed Oil</h3>
+      <p class="formula-oil-latin">Carthamus tinctorius</p>
+      <p class="formula-oil-desc">Cold-pressed carrier base that enables smooth absorption without leaving a greasy residue. Delivers the active botanicals deep into the skin where they can work effectively.</p>
+    </div>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">22%</div>
+    <div>
+      <h3 class="formula-oil-name">Menthol</h3>
+      <p class="formula-oil-latin">Mentha arvensis</p>
+      <p class="formula-oil-desc">The signature cooling sensation that activates within 60 seconds of application. At 22% concentration, it delivers fast-acting relief that lasts 4+ hours per application — significantly stronger than most competitors.</p>
+    </div>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">10%</div>
+    <div>
+      <h3 class="formula-oil-name">Eucalyptus Globulus</h3>
+      <p class="formula-oil-latin">Eucalyptus globulus</p>
+      <p class="formula-oil-desc">Provides the crisp aromatic top note that defines the heritage scent profile. Supports clear breathing and sinus comfort when applied to the chest or under the nose.</p>
+    </div>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">8%</div>
+    <div>
+      <h3 class="formula-oil-name">Camphor</h3>
+      <p class="formula-oil-latin">Cinnamomum camphora</p>
+      <p class="formula-oil-desc">Delivers the warming follow-through that complements menthol's initial cooling action. The cool-to-warm transition is what makes the heritage formula uniquely effective.</p>
+    </div>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">6%</div>
+    <div>
+      <h3 class="formula-oil-name">Wintergreen</h3>
+      <p class="formula-oil-latin">Gaultheria procumbens</p>
+      <p class="formula-oil-desc">Deep warming aromatic that provides sustained comfort to muscles and joints. A cornerstone of traditional botanical relief formulas for over a century.</p>
+    </div>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">3%</div>
+    <div>
+      <h3 class="formula-oil-name">Lavender</h3>
+      <p class="formula-oil-latin">Lavandula angustifolia</p>
+      <p class="formula-oil-desc">Soft floral finish that balances the intensity of menthol and eucalyptus. Adds a calming aromatic dimension that makes the oil pleasant for everyday use.</p>
+    </div>
+  </div>
+
+  <div class="formula-oil-card">
+    <div class="formula-oil-pct">&lt;1%</div>
+    <div>
+      <h3 class="formula-oil-name">Clove Bud</h3>
+      <p class="formula-oil-latin">Syzygium aromaticum</p>
+      <p class="formula-oil-desc">Rich in eugenol, clove bud provides the traditional bottom note that gives the blend its characteristic depth. A small amount goes a long way in rounding out the aromatic profile.</p>
+    </div>
+  </div>
+
+  <div class="formula-totals">
+    <div class="formula-stat">
+      <span class="formula-stat-num">52%</span>
+      <span class="formula-stat-label">Total Active Concentration</span>
+    </div>
+    <div class="formula-stat">
+      <span class="formula-stat-num">7</span>
+      <span class="formula-stat-label">Botanical Oils</span>
+    </div>
+    <div class="formula-stat">
+      <span class="formula-stat-num">24+</span>
+      <span class="formula-stat-label">Months Shelf Life (Sealed)</span>
+    </div>
+  </div>
+
+  <div class="formula-quality">
+    <h2>Quality You Can Trust</h2>
+    <div class="formula-badges">
+      <div class="formula-badge">
+        <div class="formula-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <span class="formula-badge-text">COA-Tested Every Batch</span>
+      </div>
+      <div class="formula-badge">
+        <div class="formula-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="formula-badge-text">Made in USA</span>
+      </div>
+      <div class="formula-badge">
+        <div class="formula-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg>
+        </div>
+        <span class="formula-badge-text">Sealed Against Evaporation</span>
+      </div>
+      <div class="formula-badge">
+        <div class="formula-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <span class="formula-badge-text">Full Ingredient Transparency</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-cta">
+    <h2>Experience the Full Heritage Formula</h2>
+    <p>10ml of concentrated botanical relief — twice the size, sealed against evaporation, shipped to your door.</p>
+    <a href="/products/botanical-relief-oil-10ml" class="btn-primary">Shop Now — $24.99</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Formula Page",
+  "settings": [],
+  "presets": [{ "name": "Our Formula Page" }]
+}
+{% endschema %}

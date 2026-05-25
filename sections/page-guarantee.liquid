@@ -1,0 +1,227 @@
+{%- comment -%}Seven Meridian — 90-Day Guarantee Page{%- endcomment -%}
+
+<style>
+  .guarantee-page { max-width: 800px; margin: 0 auto; padding: 60px 24px 80px; }
+  .guarantee-hero { text-align: center; margin-bottom: 48px; }
+  .guarantee-shield {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .guarantee-shield svg { width: 40px; height: 40px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+  .guarantee-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .guarantee-hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .guarantee-promise {
+    background: linear-gradient(135deg, #f9f4ec, #f0ead6);
+    border: 2px solid var(--color-accent);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .guarantee-promise h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin: 0 0 16px; }
+  .guarantee-promise p { font-size: 16px; line-height: 1.8; color: var(--color-text); max-width: 540px; margin: 0 auto; }
+
+  .guarantee-how {
+    margin-bottom: 48px;
+  }
+  .guarantee-how h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin: 0 0 28px; text-align: center; }
+  .guarantee-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .guarantee-step {
+    text-align: center;
+    padding: 24px 20px;
+    background: #F8F7F4;
+    border-radius: 10px;
+  }
+  .guarantee-step-num {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 12px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .guarantee-step h3 { font-size: 15px; font-weight: 700; color: var(--color-primary); margin: 0 0 6px; }
+  .guarantee-step p { font-size: 13px; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+  .guarantee-covers { margin-bottom: 48px; }
+  .guarantee-covers h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin: 0 0 20px; }
+  .guarantee-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .guarantee-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #F8F7F4;
+    border-radius: 8px;
+  }
+  .guarantee-item svg { width: 20px; height: 20px; stroke: #16a34a; fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 1px; }
+  .guarantee-item p { font-size: 14px; line-height: 1.5; color: var(--color-text); margin: 0; }
+
+  .guarantee-faq { margin-bottom: 48px; }
+  .guarantee-faq h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); text-align: center; margin: 0 0 24px; }
+  .guarantee-faq-item { border-bottom: 1px solid var(--color-border); }
+  .guarantee-faq-item summary {
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .guarantee-faq-item summary::after { content: '+'; font-size: 20px; color: var(--color-accent); }
+  .guarantee-faq-item[open] summary::after { content: '−'; }
+  .guarantee-faq-item p { padding: 0 0 18px; font-size: 14px; line-height: 1.7; color: var(--color-text); margin: 0; }
+
+  .guarantee-cta {
+    text-align: center;
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 48px 32px;
+  }
+  .guarantee-cta h2 { font-family: var(--font-heading); font-size: 28px; color: #fff; margin: 0 0 12px; }
+  .guarantee-cta p { font-size: 15px; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+  .guarantee-cta .btn-primary { display: inline-block; padding: 16px 40px; background: var(--color-accent); color: var(--color-primary); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  @media (max-width: 600px) {
+    .guarantee-steps { grid-template-columns: 1fr; }
+    .guarantee-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="guarantee-page">
+  <div class="guarantee-hero">
+    <div class="guarantee-shield">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <h1>90-Day Satisfaction Guarantee</h1>
+    <p>We stand behind every bottle of Seven Meridian. If you're not completely satisfied, we'll make it right — no questions asked.</p>
+  </div>
+
+  <div class="guarantee-promise">
+    <h2>Our Promise to You</h2>
+    <p>Try Seven Meridian for up to 90 days. If for any reason you're not satisfied with your purchase, contact our US-based support team and we'll issue a full refund. No hoops to jump through, no return shipping to pay, no restocking fees. Your satisfaction is the only thing that matters.</p>
+  </div>
+
+  <div class="guarantee-how">
+    <h2>How It Works</h2>
+    <div class="guarantee-steps">
+      <div class="guarantee-step">
+        <div class="guarantee-step-num">1</div>
+        <h3>Try It Risk-Free</h3>
+        <p>Use your bottle of Seven Meridian for up to 90 days from the date of purchase.</p>
+      </div>
+      <div class="guarantee-step">
+        <div class="guarantee-step-num">2</div>
+        <h3>Not Satisfied? Contact Us</h3>
+        <p>Email support@sevenmeridian.com or use our contact form. Tell us what didn't work for you.</p>
+      </div>
+      <div class="guarantee-step">
+        <div class="guarantee-step-num">3</div>
+        <h3>Get Your Refund</h3>
+        <p>We'll process your full refund within 3–5 business days. No return shipping required.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="guarantee-covers">
+    <h2>What's Covered</h2>
+    <div class="guarantee-grid">
+      <div class="guarantee-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>One-time purchases and first subscription orders</p>
+      </div>
+      <div class="guarantee-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Products purchased directly from sevenmeridian.com</p>
+      </div>
+      <div class="guarantee-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Used or opened bottles (no need to return)</p>
+      </div>
+      <div class="guarantee-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Claims within 90 days of original purchase date</p>
+      </div>
+      <div class="guarantee-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Full purchase price refunded (including tax)</p>
+      </div>
+      <div class="guarantee-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>No return shipping costs — ever</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="guarantee-faq">
+    <h2>Guarantee FAQ</h2>
+    <details class="guarantee-faq-item" open>
+      <summary>Do I need to return the bottle?</summary>
+      <p>No. We don't require you to ship anything back. Simply contact us and we'll process your refund.</p>
+    </details>
+    <details class="guarantee-faq-item">
+      <summary>How long does the refund take?</summary>
+      <p>Refunds are processed within 3–5 business days of your request. Depending on your bank, it may take an additional 5–10 business days to appear on your statement.</p>
+    </details>
+    <details class="guarantee-faq-item">
+      <summary>Does this apply to subscription orders?</summary>
+      <p>The guarantee applies to your first subscription order. For subsequent subscription deliveries, you can cancel anytime and will not be charged for future shipments.</p>
+    </details>
+    <details class="guarantee-faq-item">
+      <summary>What if I purchased through Amazon?</summary>
+      <p>Amazon purchases are covered by Amazon's return policy. For the best guarantee experience, purchase directly from sevenmeridian.com.</p>
+    </details>
+    <details class="guarantee-faq-item">
+      <summary>Is there a limit on the number of bottles?</summary>
+      <p>The guarantee covers one bottle per customer. For multi-bottle orders, please contact us and we'll work with you on a case-by-case basis.</p>
+    </details>
+  </div>
+
+  <div class="guarantee-cta">
+    <h2>Try Seven Meridian Risk-Free</h2>
+    <p>90 days. Full refund. No questions asked. What do you have to lose?</p>
+    <a href="/products/botanical-relief-oil-10ml" class="btn-primary">Shop Now — $24.99</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Guarantee Page",
+  "settings": [],
+  "presets": [{ "name": "Guarantee Page" }]
+}
+{% endschema %}

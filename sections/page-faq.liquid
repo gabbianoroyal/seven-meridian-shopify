@@ -1,0 +1,153 @@
+{%- comment -%}Seven Meridian — FAQ Standalone Page{%- endcomment -%}
+
+<style>
+  .faq-page { max-width: 800px; margin: 0 auto; padding: 60px 24px 80px; }
+  .faq-page-hero { text-align: center; margin-bottom: 48px; }
+  .faq-page-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-primary);
+    margin: 0 0 12px;
+  }
+  .faq-page-hero p {
+    font-size: 16px;
+    color: var(--color-text-light);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .faq-category { margin-bottom: 40px; }
+  .faq-category h2 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--color-primary);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-accent);
+    margin: 0 0 0;
+  }
+  .faq-item { border-bottom: 1px solid var(--color-border); }
+  .faq-item summary {
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--color-accent); font-weight: 400; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item .faq-answer { padding: 0 0 18px; font-size: 14px; line-height: 1.8; color: var(--color-text); margin: 0; }
+  .faq-contact {
+    text-align: center;
+    background: #F8F7F4;
+    border-radius: 12px;
+    padding: 40px 32px;
+    margin-top: 48px;
+  }
+  .faq-contact h2 { font-family: var(--font-heading); font-size: 22px; color: var(--color-primary); margin: 0 0 8px; }
+  .faq-contact p { font-size: 15px; color: var(--color-text); margin: 0 0 20px; }
+  .faq-contact a { display: inline-block; padding: 14px 32px; background: var(--color-primary); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+</style>
+
+<div class="faq-page">
+  <div class="faq-page-hero">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about Seven Meridian botanical relief oil.</p>
+  </div>
+
+  <div class="faq-category">
+    <h2>Product &amp; Formula</h2>
+    <details class="faq-item" open>
+      <summary>How is this different from the original Tei-Fu Essential Oil?</summary>
+      <p class="faq-answer">Seven Meridian uses the same heritage 7-oil architecture at full concentration. It's 10ml instead of 5ml, sealed against evaporation with an aluminum cap and Polycone liner, and shipped directly to your door — no MLM markup.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What's in the formula?</summary>
+      <p class="faq-answer">Safflower seed oil (48%), menthol (22%), eucalyptus globulus (10%), camphor (8%), wintergreen (6%), lavender (3%), clove bud (&lt;1%), and tocopherol (vitamin E). The total active botanical concentration is 52%.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Will the bottle evaporate like other essential oils?</summary>
+      <p class="faq-answer">No. Seven Meridian uses an aluminum cap with Polycone liner specifically designed to prevent vapor permeation. Stored properly with the cap tightly sealed, it maintains full strength for 24+ months.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is this product organic or all-natural?</summary>
+      <p class="faq-answer">Seven Meridian is made with naturally-derived botanical ingredients. We prioritize purity and potency — every batch is COA-tested to verify ingredient quality and concentration.</p>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Usage &amp; Safety</h2>
+    <details class="faq-item">
+      <summary>Is this safe to use on the face for tension headaches?</summary>
+      <p class="faq-answer">Apply 1 drop diluted with a carrier oil (coconut, jojoba, etc.) to the temples. Never apply undiluted to the face. Avoid eyes, nose, and mouth. Always patch-test before first use.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How many applications per bottle?</summary>
+      <p class="faq-answer">At 2–3 drops per use, a 10ml bottle provides approximately 80–100 applications. Daily users typically get 6–8 weeks per bottle.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is it safe during pregnancy?</summary>
+      <p class="faq-answer">Seven Meridian contains wintergreen and camphor. Consult your healthcare professional before use during pregnancy, nursing, or while under medical care.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can children use this product?</summary>
+      <p class="faq-answer">Not recommended for children under 2 years of age. For children over 2, consult a healthcare professional and always dilute with a carrier oil before use.</p>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Orders &amp; Shipping</h2>
+    <details class="faq-item">
+      <summary>How long does shipping take?</summary>
+      <p class="faq-answer">Standard shipping takes 3–5 business days within the US. Orders placed before 2 PM EST ship the same business day. Subscription orders always ship free.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you ship internationally?</summary>
+      <p class="faq-answer">Currently we ship within the United States only. International shipping is coming soon — join our email list to be notified when it becomes available.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I track my order?</summary>
+      <p class="faq-answer">Yes. You'll receive a shipping confirmation email with tracking information as soon as your order ships.</p>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Subscriptions</h2>
+    <details class="faq-item">
+      <summary>Can I subscribe and save?</summary>
+      <p class="faq-answer">Yes. Subscribe &amp; Save gives you 15% off every delivery with free shipping. Choose delivery every 60, 75, or 90 days. Skip, pause, or cancel anytime from your account.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How do I cancel my subscription?</summary>
+      <p class="faq-answer">Log into your account, go to Subscriptions, and click Cancel. There's no cancellation fee and no minimum orders. You can also email support@sevenmeridian.com and we'll handle it for you.</p>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Returns &amp; Guarantee</h2>
+    <details class="faq-item">
+      <summary>What if I'm not satisfied?</summary>
+      <p class="faq-answer">We offer a 90-day satisfaction guarantee. Contact us for a full refund — no questions asked, no return shipping required.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need to return the bottle for a refund?</summary>
+      <p class="faq-answer">No. We don't require you to ship anything back. Simply contact our support team and we'll process your refund within 3–5 business days.</p>
+    </details>
+  </div>
+
+  <div class="faq-contact">
+    <h2>Still Have Questions?</h2>
+    <p>Our US-based support team typically responds within 24 hours.</p>
+    <a href="/pages/contact">Contact Us</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "settings": [],
+  "presets": [{ "name": "FAQ Page" }]
+}
+{% endschema %}

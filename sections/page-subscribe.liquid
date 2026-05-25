@@ -1,0 +1,242 @@
+{%- comment -%}Seven Meridian — Subscribe & Save Page{%- endcomment -%}
+
+<style>
+  .subscribe-page { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
+  .subscribe-hero { text-align: center; margin-bottom: 48px; }
+  .subscribe-hero .badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .subscribe-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-primary);
+    margin: 0 0 16px;
+  }
+  .subscribe-hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .subscribe-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  .subscribe-benefit {
+    background: #F8F7F4;
+    border-radius: 10px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .subscribe-benefit-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .subscribe-benefit-icon svg { width: 22px; height: 22px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+  .subscribe-benefit h3 { font-size: 16px; font-weight: 700; color: var(--color-primary); margin: 0 0 4px; }
+  .subscribe-benefit p { font-size: 14px; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+  .subscribe-how {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .subscribe-how h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--color-primary);
+    margin: 0 0 32px;
+  }
+  .subscribe-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .subscribe-step {
+    text-align: center;
+  }
+  .subscribe-step-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .subscribe-step h3 { font-size: 16px; font-weight: 700; color: var(--color-primary); margin: 0 0 8px; }
+  .subscribe-step p { font-size: 14px; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+  .subscribe-pricing {
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 48px 32px;
+    text-align: center;
+    margin-bottom: 56px;
+    color: #fff;
+  }
+  .subscribe-pricing h2 { font-family: var(--font-heading); font-size: 28px; margin: 0 0 8px; }
+  .subscribe-pricing .price-compare { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: line-through; }
+  .subscribe-pricing .price-main { font-family: var(--font-heading); font-size: 48px; color: var(--color-accent); margin: 8px 0; }
+  .subscribe-pricing .price-per { font-size: 14px; color: rgba(255,255,255,0.7); }
+  .subscribe-pricing .price-savings { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--color-accent); margin: 16px 0 24px; }
+  .subscribe-pricing .btn-primary { display: inline-block; padding: 16px 48px; background: var(--color-accent); color: var(--color-primary); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; }
+  .subscribe-pricing .sub-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 12px; }
+
+  .subscribe-faq { margin-bottom: 48px; }
+  .subscribe-faq h2 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); text-align: center; margin: 0 0 24px; }
+  .subscribe-faq-item { border-bottom: 1px solid var(--color-border); }
+  .subscribe-faq-item summary {
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subscribe-faq-item summary::after { content: '+'; font-size: 20px; color: var(--color-accent); }
+  .subscribe-faq-item[open] summary::after { content: '−'; }
+  .subscribe-faq-item p { padding: 0 0 18px; font-size: 14px; line-height: 1.7; color: var(--color-text); margin: 0; }
+  @media (max-width: 600px) {
+    .subscribe-benefits { grid-template-columns: 1fr; }
+    .subscribe-steps { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="subscribe-page">
+  <div class="subscribe-hero">
+    <span class="badge">Subscribe &amp; Save 15%</span>
+    <h1>Never Run Out of Relief</h1>
+    <p>Get Seven Meridian botanical relief oil delivered on your schedule — 15% off every order, free shipping, and complete flexibility.</p>
+  </div>
+
+  <div class="subscribe-benefits">
+    <div class="subscribe-benefit">
+      <div class="subscribe-benefit-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div>
+        <h3>15% Off Every Delivery</h3>
+        <p>Save on every order — not just the first one. Your subscription price locks in at $21.24 per bottle.</p>
+      </div>
+    </div>
+    <div class="subscribe-benefit">
+      <div class="subscribe-benefit-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="18" rx="2" ry="2"/><line x1="1" y1="9" x2="23" y2="9"/></svg>
+      </div>
+      <div>
+        <h3>Free Shipping Always</h3>
+        <p>Every subscription order ships free within the US — no minimum, no exceptions.</p>
+      </div>
+    </div>
+    <div class="subscribe-benefit">
+      <div class="subscribe-benefit-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <h3>Choose Your Schedule</h3>
+        <p>Delivery every 60, 75, or 90 days. Daily users love 60 days; occasional users prefer 90.</p>
+      </div>
+    </div>
+    <div class="subscribe-benefit">
+      <div class="subscribe-benefit-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </div>
+      <div>
+        <h3>Skip, Pause, or Cancel Anytime</h3>
+        <p>No commitments, no contracts, no cancellation fees. Manage everything from your account in two clicks.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subscribe-how">
+    <h2>How It Works</h2>
+    <div class="subscribe-steps">
+      <div class="subscribe-step">
+        <div class="subscribe-step-num">1</div>
+        <h3>Choose Subscribe &amp; Save</h3>
+        <p>Select the subscription option on the product page and pick your preferred delivery frequency.</p>
+      </div>
+      <div class="subscribe-step">
+        <div class="subscribe-step-num">2</div>
+        <h3>We Ship on Schedule</h3>
+        <p>You'll get a reminder email before each shipment so you can adjust, skip, or add extra bottles.</p>
+      </div>
+      <div class="subscribe-step">
+        <div class="subscribe-step-num">3</div>
+        <h3>Enjoy Uninterrupted Relief</h3>
+        <p>Your sealed bottle arrives right when you need it — full strength, every time, at 15% off.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subscribe-pricing">
+    <h2>Subscription Pricing</h2>
+    <div class="price-compare">Regular price: $24.99</div>
+    <div class="price-main">$21.24</div>
+    <div class="price-per">per bottle · delivered to your door</div>
+    <div class="price-savings">You save $3.75 every delivery</div>
+    <br>
+    <a href="/products/botanical-relief-oil-10ml" class="btn-primary">Start Your Subscription</a>
+    <p class="sub-note">Cancel anytime · Free shipping · 90-day guarantee still applies</p>
+  </div>
+
+  <div class="subscribe-faq">
+    <h2>Subscription FAQ</h2>
+    <details class="subscribe-faq-item" open>
+      <summary>How do I manage my subscription?</summary>
+      <p>Log into your account and visit the Subscriptions tab. From there you can change your delivery frequency, skip a shipment, update your payment method, or cancel — all in a few clicks.</p>
+    </details>
+    <details class="subscribe-faq-item">
+      <summary>Can I change my delivery frequency?</summary>
+      <p>Yes. Choose every 60, 75, or 90 days and change anytime from your account. We recommend 60 days for daily users and 90 days for occasional use.</p>
+    </details>
+    <details class="subscribe-faq-item">
+      <summary>Will I be notified before each shipment?</summary>
+      <p>Yes — you'll receive a "running low" reminder email 5 days before each shipment processes, giving you time to skip, adjust, or add items.</p>
+    </details>
+    <details class="subscribe-faq-item">
+      <summary>Is there a commitment or cancellation fee?</summary>
+      <p>No. There is no minimum number of orders and no cancellation fee. Cancel anytime from your account dashboard.</p>
+    </details>
+    <details class="subscribe-faq-item">
+      <summary>Does the 90-day guarantee apply to subscriptions?</summary>
+      <p>Absolutely. Every subscription order is backed by the same 90-day satisfaction guarantee. If you're not happy, contact us for a full refund.</p>
+    </details>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Subscribe Page",
+  "settings": [],
+  "presets": [{ "name": "Subscribe Page" }]
+}
+{% endschema %}

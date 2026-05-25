@@ -297,9 +297,9 @@
     </div>
 
     <div class="product-info__price-row">
-      <span class="product-info__price">{{ current_variant.price | money }}</span>
+      <span class="product-info__price" id="display-price">{{ current_variant.price | money }}</span>
       {%- if product.selling_plan_groups.size > 0 -%}
-        <span class="product-info__sub-price">Subscribe &amp; save 15%</span>
+        <span class="product-info__sub-price" id="display-sub-label">Subscribe &amp; save 15%</span>
       {%- endif -%}
     </div>
 
@@ -413,22 +413,31 @@ document.addEventListener('DOMContentLoaded', function() {
   function formatMoney(cents) {
     return '$' + (cents / 100).toFixed(2);
   }
+  var displayPrice = document.getElementById('display-price');
+  var displaySubLabel = document.getElementById('display-sub-label');
   function updateAtcPrice() {
-    if (!atcBtn) return;
     var subWidget = document.querySelector('.subscriptions_app_embed_block');
     if (!subWidget) return;
-    // Check if subscription radio is selected
-    var subRadio = subWidget.querySelector('input[type="radio"][value*="subscribe"], input[type="radio"]:not([value="onetime"]):not([value="one-time"])');
-    var oneTimeRadio = subWidget.querySelector('input[type="radio"][value="onetime"], input[type="radio"][value="one-time"]');
     var isSub = false;
-    // Try checking all radios in the widget
     var allRadios = subWidget.querySelectorAll('input[type="radio"]');
     if (allRadios.length >= 2) {
-      // First radio is usually one-time, second is subscribe
       isSub = allRadios[1] && allRadios[1].checked;
     }
     var price = isSub ? subPrice : oneTimePrice;
-    atcBtn.textContent = 'Add to Cart — ' + formatMoney(price);
+    // Update Add to Cart button
+    if (atcBtn) atcBtn.textContent = 'Add to Cart — ' + formatMoney(price);
+    // Update top price display
+    if (displayPrice) displayPrice.textContent = formatMoney(price);
+    // Update sub label
+    if (displaySubLabel) {
+      if (isSub) {
+        displaySubLabel.textContent = 'You save 15% with Subscribe & Save';
+        displaySubLabel.style.color = '#16a34a';
+      } else {
+        displaySubLabel.textContent = 'Subscribe & save 15%';
+        displaySubLabel.style.color = '';
+      }
+    }
   }
   // Observe changes in the subscription widget
   var subBlock = document.querySelector('.subscriptions_app_embed_block');

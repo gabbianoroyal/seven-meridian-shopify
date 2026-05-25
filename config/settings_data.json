@@ -16,6 +16,7 @@
     "color_text_light": "#6B7280",
     "color_border": "#E5E7EB",
     "announcement_text": "Subscribe & Save 15% — Free Shipping on All Subscriptions",
+    "announcement_link": "/products/botanical-relief-oil-10ml",
     "cart_type": "drawer",
     "free_shipping_threshold": 30,
     "sections": {

@@ -278,7 +278,7 @@
   <div class="product-info">
     <nav class="product-info__breadcrumb" aria-label="Breadcrumb">
       <a href="/">Home</a> /
-      {%- if product.collections.size > 0 -%}
+      {%- if product.collections.size > 0 and product.collections.first.title != 'Home page' and product.collections.first.title != 'Frontpage' -%}
         <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a> /
       {%- endif -%}
       {{ product.title }}
@@ -371,11 +371,21 @@
       </details>
     </div>
 
-    <!-- Cross-sell placeholder -->
-    <div class="cross-sell">
-      <h3 class="cross-sell__title">Complete Your Routine</h3>
-      <div class="cross-sell__placeholder">Cross-sell products will appear here</div>
-    </div>
+    <!-- Cross-sell: hidden until additional products are added -->
+    {%- if recommendations.products_count > 0 -%}
+      <div class="cross-sell">
+        <h3 class="cross-sell__title">Complete Your Routine</h3>
+        <div class="cross-sell__grid">
+          {%- for rec in recommendations.products limit: 3 -%}
+            <a href="{{ rec.url }}" class="cross-sell__item">
+              {{ rec.featured_image | image_url: width: 200 | image_tag: loading: 'lazy' }}
+              <span>{{ rec.title }}</span>
+              <span>{{ rec.price | money }}</span>
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </section>
 

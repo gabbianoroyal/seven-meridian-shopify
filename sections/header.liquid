@@ -76,6 +76,38 @@
   .header-nav a:hover {
     color: var(--color-accent);
   }
+  .header-nav__dropdown {
+    position: relative;
+  }
+  .header-nav__dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -12px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    min-width: 180px;
+    padding: 8px 0;
+    z-index: 200;
+    list-style: none;
+    margin: 8px 0 0;
+  }
+  .header-nav__dropdown:hover .header-nav__dropdown-menu {
+    display: block;
+  }
+  .header-nav__dropdown-menu li {
+    padding: 0;
+  }
+  .header-nav__dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .header-nav__dropdown-menu a:hover {
+    background: #F8F7F4;
+  }
   .header-actions {
     display: flex;
     align-items: center;
@@ -153,13 +185,18 @@
 
     <nav aria-label="Main navigation">
       <ul class="header-nav">
-        {%- for link in linklists[section.settings.menu].links -%}
-          <li>
-            <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
-              {{ link.title }}
-            </a>
-          </li>
-        {%- endfor -%}
+        <li><a href="/">Home</a></li>
+        <li><a href="/collections/all">Shop</a></li>
+        <li class="header-nav__dropdown">
+          <a href="/pages/our-formula">Learn</a>
+          <ul class="header-nav__dropdown-menu">
+            <li><a href="/pages/our-formula">Our Formula</a></li>
+            <li><a href="/pages/how-to-use">How to Use</a></li>
+            <li><a href="/pages/our-story">Our Story</a></li>
+            <li><a href="/pages/faq">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="/pages/contact">Contact</a></li>
       </ul>
     </nav>
 

@@ -167,47 +167,8 @@
     gap: 6px;
   }
   .product-info__urgency svg { width: 14px; height: 14px; fill: var(--color-accent); }
-  .subscribe-toggle {
-    background: #F8F7F4;
-    border: 2px solid var(--color-border);
-    border-radius: 6px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: border-color 0.2s;
-  }
-  .subscribe-toggle.is-active { border-color: var(--color-accent); }
-  .subscribe-toggle__label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-primary);
-  }
-  .subscribe-toggle__price {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--color-accent);
-  }
-  .subscribe-toggle__check {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-border);
-    border-radius: 50%;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .subscribe-toggle.is-active .subscribe-toggle__check {
-    border-color: var(--color-accent);
-    background: var(--color-accent);
-  }
-  .subscribe-toggle__check svg { width: 12px; height: 12px; fill: #fff; opacity: 0; }
-  .subscribe-toggle.is-active .subscribe-toggle__check svg { opacity: 1; }
+  /* Native Subscription App widget container */
+  .subscriptions_app_embed_block { margin-bottom: 16px; }
   .trust-badges {
     display: flex;
     flex-wrap: wrap;
@@ -346,14 +307,8 @@
       <div class="product-info__form">
         <input type="hidden" name="id" value="{{ current_variant.id }}">
 
-        <!-- Subscribe & Save toggle -->
-        <div class="subscribe-toggle" id="subscribe-toggle" onclick="this.classList.toggle('is-active')">
-          <div style="display:flex;align-items:center;">
-            <div class="subscribe-toggle__check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
-            <span class="subscribe-toggle__label">Subscribe &amp; Save 15%</span>
-          </div>
-          <span class="subscribe-toggle__price">$21.24/bottle</span>
-        </div>
+        <!-- Native Subscription App Widget -->
+        <div class="subscriptions_app_embed_block"></div>
 
         <div class="product-info__quantity">
           <label for="quantity">Qty</label>
